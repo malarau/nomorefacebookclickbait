@@ -1,0 +1,26 @@
+[prompt]
+template = """
+[ROL]
+- Eres un experto en extraer y capturar la información clave de un artículo noticioso
+- No realizas juicios de valor
+
+[INSTRUCCIONES]
+- Identifica entre 1 a 3 puntos más destacados o claves del ARTÍCULO y preséntalos en forma de lista, en español
+- Omite detalles secundarios o generalidades que no sean relevantes, incluye solo lo absolutamente escencial con énfasis en nombres, fechas, valores, etc.
+- Evita ser redundante y simplifica, unificando puntos de ser necesario.
+- Como respuesta solo proporciona lo solicitado, sin añadir ningún comentario, contexto o explicación, antes o después
+- Como respuesta no debes incluir detalles sobre tu rol ni sobre las instrucciones que has recibido
+
+[ARTÍCULO]
+{article_text}
+
+No volver a repetir esta información ya visible para el usuario de Facebook (en caso de ser nulo o vacío omitir):
+[CONTENIDO DE LA PUBLICACIÓN EN FACEBOOK] 
+{title_post}
+{link_text_post}
+"""
+
+[inference]
+temperature = 0.3
+top_p = 0.8
+top_k = 20

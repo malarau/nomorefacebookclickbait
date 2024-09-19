@@ -1,0 +1,25 @@
+services:
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    shm_size: 1G
+    deploy:
+      resources:
+        limits:
+          cpus: '0.8'
+          memory: 1G
+
+  scraper:
+    build: .
+    volumes:
+      - ./app/logs:/app/logs
+      - ./app/model/config.toml:/app/model/config.toml
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '1.2'
+          memory: ${MODEL_CONTAINER_MEM}
